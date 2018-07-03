@@ -18,10 +18,10 @@ This Package implements popular CNN Visualization techniques and is built on top
 3. Inverted Image Representations
 4. Smooth Grad
 5. Adversarial Techniques
-  * Fast Gradient Sign, Untargeted
-  * Fast Gradient Sign, Targeted
-  * Gradient Ascent, Adversarial Images
-  * Gradient Ascent, Fooling Images (Unrecognizable images predicted as classes with high confidence)
+    * Fast Gradient Sign, Untargeted
+    * Fast Gradient Sign, Targeted
+    * Gradient Ascent, Adversarial Images
+    * Gradient Ascent, Fooling Images (Unrecognizable images predicted as classes with high confidence)
 
 ## Some Notes
 
