@@ -18,10 +18,10 @@ This Package implements popular CNN Visualization techniques and is built on top
 3. Inverted Image Representations
 4. Smooth Grad
 5. Adversarial Techniques
-  1. Fast Gradient Sign, Untargeted
-  2. Fast Gradient Sign, Targeted
-  3. Gradient Ascent, Adversarial Images
-  4. Gradient Ascent, Fooling Images (Unrecognizable images predicted as classes with high confidence)
+  * Fast Gradient Sign, Untargeted
+  * Fast Gradient Sign, Targeted
+  * Gradient Ascent, Adversarial Images
+  * Gradient Ascent, Fooling Images (Unrecognizable images predicted as classes with high confidence)
 
 ## Some Notes
 
@@ -55,4 +55,4 @@ This Package implements popular CNN Visualization techniques and is built on top
 
 [13] A. Nguyen, J. Yosinski, J. Clune. Deep Neural Networks are Easily Fooled: High Confidence Predictions for Unrecognizable Images https://arxiv.org/abs/1412.1897
 
-This repo draws deep inspiration from https://github.com/utkuozbulak/pytorch-cnn-visualizations which implements similar algorithms in Pytorch 
+This repo draws deep inspiration from https://github.com/utkuozbulak/pytorch-cnn-visualizations which implements similar algorithms in Pytorch
