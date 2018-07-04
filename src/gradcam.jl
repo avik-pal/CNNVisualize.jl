@@ -27,7 +27,7 @@ function save_gradcam(gradient, original_image_path, grad_file_name, heatmap_fil
   catch
     info("The heatmap could not be displayed. The file has been saved at $combined_file_name")
   end
-  save(file_name, img)
+  save(grad_file_name, img)
   savefig(h1, heatmap_file_name)
   savefig(h2, combined_file_name)
 end
