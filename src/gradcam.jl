@@ -4,7 +4,7 @@ struct GradCAM
   model::Chain
 end
 
-function save_gradcam(gradient, original_image_path, grad_file_name)
+function save_gradcam(gradient, original_image_path, grad_file_name, heatmap_file_name, combined_file_name)
   gr()
   clibrary(:colorcet)
   gradient = max.(gradient, zero(gradient))
