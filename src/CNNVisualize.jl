@@ -2,7 +2,7 @@ __precompile__()
 
 module CNNVisualize
 
-using Flux, Plots, Metalhead, Images, Augmentor
+using Flux, Plots, Images
 using Flux: Tracker
 using Flux.Tracker: data
 
