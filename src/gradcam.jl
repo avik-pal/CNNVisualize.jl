@@ -4,7 +4,7 @@ struct GradCAM
   model::Chain
 end
 
-function save_gradcam(gradient, original_image_path, grad_file_name, heatmap_file_name, combined_file_name)
+function save_gradcam(gradient, original_image_path, grad_file_name)
   gr()
   clibrary(:colorcet)
   gradient = max.(gradient, zero(gradient))
@@ -16,7 +16,7 @@ function save_gradcam(gradient, original_image_path, grad_file_name, heatmap_fil
   try
     display(h1)
   catch
-    info("The heatmap could not be displayed. The file has been saved at $heatmap_file_name")
+    info("The heatmap could not be displayed. The file will be saved at $heatmap_file_name")
   end
   mapped = float.(channelview(load(original_image_path))) * 0.9 .+ reshape(float.(img), 1, 224, 224) * 3
   mapped -= minimum(mapped)
@@ -25,11 +25,17 @@ function save_gradcam(gradient, original_image_path, grad_file_name, heatmap_fil
   try
     display(h2)
   catch
-    info("The heatmap could not be displayed. The file has been saved at $combined_file_name")
+    info("The heatmap could not be displayed. The file will be saved at $combined_file_name")
   end
   save(grad_file_name, img)
-  savefig(h1, heatmap_file_name)
-  savefig(h2, combined_file_name)
+  try
+    savefig(h1, heatmap_file_name)
+    savefig(h2, combined_file_name)
+  catch
+    info("Encountered Errors while trying to save heatmaps. So the heatmaps are being returned")
+    info("They need to be saved manually")
+    (h1, h2)
+  end
 end
 
 function save_gradient(x)
