@@ -72,7 +72,7 @@ guided_relu2(x) = max.(zero(x), x)
 
 guided_relu2(x::TrackedArray) = Tracker.track(guided_relu2, x)
 
-Tracker.back(::typeof(guided_relu2), Δ, x) = Tracker.@back(x, max(zero(Δ), Δ))
+Tracker.back(::typeof(guided_relu2), Δ, x) = Tracker.@back(x, max.(zero(Δ), Δ))
 
 function Deconvolution(model::Chain)
   model = change_activation(model, guided_relu2)

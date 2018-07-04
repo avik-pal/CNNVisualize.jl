@@ -12,13 +12,21 @@ function save_gradcam(gradient, original_image_path, grad_file_name, heatmap_fil
   img = Gray.(gradient)
   img = imresize(img, 224, 224)
   display(img)
-  h1 = plot(heatmap(float.(img), color = :rainbow, yflip = true))
-  display(h1)
+  h1 = plot(heatmap(float.(augment(img, FlipY())), color = :rainbow))
+  try
+    display(h1)
+  catch
+    info("The heatmap could not be displayed. The file has been saved at $heatmap_file_name")
+  end
   mapped = float.(channelview(load(original_image_path))) * 0.9 .+ reshape(float.(img), 1, 224, 224) * 3
   mapped -= minimum(mapped)
   mapped /= maximum(mapped)
-  h2 = plot(heatmap(float.(Gray.(colorview(RGB{eltype(mapped)}, mapped))), color = :rainbow, yflip = true))
-  display(h2)
+  h2 = plot(heatmap(float.(Gray.(augment(colorview(RGB{eltype(mapped)}, mapped), FlipY()))), color = :rainbow))
+  try
+    display(h2)
+  catch
+    info("The heatmap could not be displayed. The file has been saved at $combined_file_name")
+  end
   save(file_name, img)
   savefig(h1, heatmap_file_name)
   savefig(h2, combined_file_name)
@@ -31,7 +39,7 @@ end
 
 save_gradient(x::TrackedArray) = Tracker.track(save_gradient, x)
 
-normalize_grad(grad) = grad / (sqrt(mean(abs2(grad))) + eps())
+normalize_grad(grad) = grad / (sqrt(mean(abs2.(grad))) + eps())
 
 function Tracker.back(::typeof(save_gradient), Δ, x)
   global guided_gradients = Δ |> cpu

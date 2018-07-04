@@ -2,7 +2,7 @@ __precompile__()
 
 module CNNVisualize
 
-using Flux, Plots, Images
+using Flux, Plots, Images, Augmentor
 using Flux: Tracker
 using Flux.Tracker: data
 
@@ -12,7 +12,7 @@ include("deepdream.jl")
 include("utils.jl")
 
 export GradCAM, GuidedGradCAM, Backprop, VanillaBackprop, GuidedBackprop,
-       DeconvNet, save_gradient_images, save_gradcam, save_grayscale_gradient,
+       Deconvolution, save_gradient_images, save_gradcam, save_grayscale_gradient,
        positive_negative_saliency, im2arr_rgb, image_to_arr, load_image, save_image,
        load_model, deepdream, make_step
 
