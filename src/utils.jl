@@ -57,7 +57,7 @@ function image_to_arr(img; preprocess = true)
   if(preprocess)
     x = (x .- im_mean)./im_std
   end
-  x = reshape(x, size(x,1), size(x,2), size(x,3), 1) |> gpu
+  x = reshape(x, size(x,1), size(x,2), size(x,3), 1) * 255 |> gpu
 end
 
 function load_image(path, resize = false; size_save = true)
@@ -73,9 +73,11 @@ function load_image(path, resize = false; size_save = true)
 end
 
 function generate_image(x, resize_original = false)
-  x = reshape(x, size(x)[1:3]...)
+  x = reshape(x, size(x)[1:3]...)/255 |> cpu
   x = x .* im_std .+ im_mean
-  x = clamp.(permutedims(x, [3,2,1]), 0, 1) |> cpu
+  x = permutedims(x, [3,2,1])
+  x -= minimum(x)
+  x /= maximum(x)
   if resize_original
     imresize(colorview(RGB, x), original_size)
   else
