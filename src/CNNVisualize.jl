@@ -3,8 +3,11 @@ __precompile__()
 module CNNVisualize
 
 using Flux, Plots, Images, Augmentor
+using GR
 using Flux: Tracker
 using Flux.Tracker: data
+
+clibrary(:colorcet)
 
 include("backpropagation.jl")
 include("gradcam.jl")

@@ -5,8 +5,6 @@ struct GradCAM
 end
 
 function save_gradcam(gradient, original_image_path, grad_file_name, heatmap_file_name, combined_file_name)
-  gr()
-  clibrary(:colorcet)
   gradient = max.(gradient, zero(gradient))
   gradient = permutedims((gradient - minimum(gradient))/(maximum(gradient) - minimum(gradient)), (2, 1))
   img = Gray.(gradient)
