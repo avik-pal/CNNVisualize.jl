@@ -16,7 +16,7 @@ function save_gradcam(gradient, original_image_path, grad_file_name, heatmap_fil
   catch
     info("The heatmap could not be displayed. The file will be saved at $heatmap_file_name")
   end
-  mapped = float.(channelview(load(original_image_path))) * 0.9 .+ reshape(float.(img), 1, 224, 224) * 3
+  mapped = float.(channelview(imresize(load(original_image_path), (224, 224)))) * 0.9 .+ reshape(float.(img), 1, 224, 224) * 3
   mapped -= minimum(mapped)
   mapped /= maximum(mapped)
   h2 = plot(heatmap(float.(Gray.(augment(colorview(RGB{eltype(mapped)}, mapped), FlipY()))), color = :rainbow))
