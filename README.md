@@ -10,18 +10,13 @@ This Package implements popular CNN Visualization techniques and is built on top
 4. Gradient Weight Class Activation Maps
 5. Guided Gradient Weight Class Activation Maps
 6. DeepDream
+7. Class Specific Image Generation
 
 ## TODO
 
-1. Class Specific Image Generation
-2. CNN Filter Visualization
-3. Inverted Image Representations
-4. Smooth Grad
-5. Adversarial Techniques
-    * Fast Gradient Sign, Untargeted
-    * Fast Gradient Sign, Targeted
-    * Gradient Ascent, Adversarial Images
-    * Gradient Ascent, Fooling Images (Unrecognizable images predicted as classes with high confidence)
+1. CNN Filter Visualization
+2. Inverted Image Representations
+3. Smooth Grad
 
 ## Some Notes
 
@@ -48,11 +43,5 @@ This Package implements popular CNN Visualization techniques and is built on top
 [9] D. Erhan, Y. Bengio, A. Courville, P. Vincent. Visualizing Higher-Layer Features of a Deep Network https://www.researchgate.net/publication/265022827_Visualizing_Higher-Layer_Features_of_a_Deep_Network
 
 [10] A. Mordvintsev, C. Olah, M. Tyka. Inceptionism: Going Deeper into Neural Networks https://research.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html
-
-[11] I. J. Goodfellow, J. Shlens, C. Szegedy. Explaining and Harnessing Adversarial Examples https://arxiv.org/abs/1412.6572
-
-[12] I. J. Goodfellow, J. Shlens, C. Szegedy. Explaining and Harnessing Adversarial Examples https://arxiv.org/abs/1412.6572
-
-[13] A. Nguyen, J. Yosinski, J. Clune. Deep Neural Networks are Easily Fooled: High Confidence Predictions for Unrecognizable Images https://arxiv.org/abs/1412.1897
 
 This repo draws deep inspiration from https://github.com/utkuozbulak/pytorch-cnn-visualizations which implements similar algorithms in Pytorch
